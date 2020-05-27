@@ -1,24 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styles from './App.module.css';
+import Search from "./components/search/Search";
+import ResultsList from "./components/resultsList/ResultsList";
+import ResultsMap from "./components/resultsMap/ResultsMap";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.container}>
+      <div id="search-container" className={styles.search}><Search /></div>
+      <div id="results-list-container" className={styles.list}><ResultsList /></div>
+      <div id="results-map-container" className={styles.map}><ResultsMap /></div>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import styles from './ResultsMap.module.css';
 export const ResultsMap: React.FunctionComponent<any> = ({
     onApiLoad
 }) => {
-    const key = 'AIzaSyDzcwstCPNO69m6a84kcXmoaVvb-5wTYqw';
+    const key = 'our key will go here';
     return(
         <section className={styles.mapContainer}>
             <GoogleMapReact

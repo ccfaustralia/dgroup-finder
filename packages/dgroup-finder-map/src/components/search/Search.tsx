@@ -1,5 +1,6 @@
 import React from "react";
 import { AutoComplete } from 'antd';
+import {IMapMarker} from "../mapMarker/MapMarker";
 
 export const Search: React.FunctionComponent<any> = ({
     appState,
@@ -31,7 +32,12 @@ export const Search: React.FunctionComponent<any> = ({
     const onSelect = ((value: any) => {
         googleServices.geoCoderService.geocode({ address: value }, ((response: any) => {
             const { location } = response[0].geometry;
-            setAppState({ ...appState, searchedLocation: location });
+            const newMarker: IMapMarker = {
+                lat: location.lat(),
+                lng: location.lng(),
+                label: 'Your Location'
+            };
+            setAppState({ ...appState, homeMarker: newMarker });
         }))
     });
 

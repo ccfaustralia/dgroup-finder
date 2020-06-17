@@ -1,12 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import styles from './App.module.css';
 import Search from "./components/search/Search";
 import ResultsList from "./components/resultsList/ResultsList";
 import ResultsMap from "./components/resultsMap/ResultsMap";
+import {IMapMarker} from "./components/mapMarker/MapMarker";
 
 export interface IAppState {
     googleServices?: any;
-    searchedLocation?: any;
+    homeMarker?: IMapMarker;
 }
 function App() {
 

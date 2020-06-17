@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import GoogleMapReact from 'google-map-react';
 import styles from './ResultsMap.module.css';
+import MapMarker from "../mapMarker/MapMarker";
 
 export const ResultsMap: React.FunctionComponent<any> = ({
     appState,
@@ -23,7 +24,11 @@ export const ResultsMap: React.FunctionComponent<any> = ({
                 defaultCenter={{ lat: -24.85733, lng: 133.85750 }}
                 yesIWantToUseGoogleMapApiInternals={true}
                 onGoogleApiLoaded={({ map, maps }) => onApiLoad(map, maps)}
+                center={appState.homeMarker ? { lat: appState.homeMarker.lat, lng: appState.homeMarker.lng} : undefined}
             >
+                {appState.homeMarker && (
+                    <MapMarker lat={appState.homeMarker.lat} lng={appState.homeMarker.lng} label={appState.homeMarker.label} />
+                )}
             </GoogleMapReact>
         </section>
     );

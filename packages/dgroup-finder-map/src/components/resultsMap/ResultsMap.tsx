@@ -1,11 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
 import GoogleMapReact from 'google-map-react';
 import styles from './ResultsMap.module.css';
 
 export const ResultsMap: React.FunctionComponent<any> = ({
+    appState,
     onApiLoad
 }) => {
-    const key = 'our key will go here';
+    const key: string = process.env.REACT_APP_API_KEY as string;
+    useEffect(() => {
+        //Do something here..
+        //Add Marker to the map here based on searchedLocation
+    },[appState.searchedLocation]);
+
     return(
         <section className={styles.mapContainer}>
             <GoogleMapReact

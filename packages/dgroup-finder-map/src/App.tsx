@@ -17,10 +17,11 @@ function App() {
         setAppState({
             ...appState,
             googleServices: {
-            maps,
-            autoCompleteService: new maps.places.AutocompleteService(),
-            geoCoderService: new maps.Geocoder(),
-            singaporeLatLng: new maps.LatLng(-24.85733, 133.85750)
+                map,
+                maps,
+                autoCompleteService: new maps.places.AutocompleteService(),
+                geoCoderService: new maps.Geocoder(),
+                singaporeLatLng: new maps.LatLng(-24.85733, 133.85750)
         }});
     };
 

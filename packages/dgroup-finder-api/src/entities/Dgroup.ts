@@ -8,6 +8,12 @@ import {CoreEntity} from "./CoreEntity";
 import {Satellite} from "./Satellite";
 import {User} from "./User";
 
+export interface IDgroupQuery {
+    lat: string;
+    lng: string;
+    radius: string;
+}
+
 @Entity()
 export class Dgroup extends CoreEntity {
 

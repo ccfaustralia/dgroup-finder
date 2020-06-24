@@ -25,8 +25,8 @@ createConnection().then(async connection => {
     // ...
 
     // start express server
-    app.listen(3000, () => {
-        console.log("Server started on port 3000!");
+    app.listen(3001, () => {
+        console.log("Server started on port 3001!");
     });
 
     // insert new users for test

@@ -29,6 +29,9 @@ export const ResultsMap: React.FunctionComponent<any> = ({
                 {appState.homeMarker && (
                     <MapMarker lat={appState.homeMarker.lat} lng={appState.homeMarker.lng} label={appState.homeMarker.label} />
                 )}
+                {appState.results && appState.results.map((result: any) => (
+                    <MapMarker lat={result.latitude} lng={result.longitude} label={result.name} />
+                ))}
             </GoogleMapReact>
         </section>
     );

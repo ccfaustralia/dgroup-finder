@@ -8,6 +8,7 @@ import {IMapMarker} from "./components/mapMarker/MapMarker";
 export interface IAppState {
     googleServices?: any;
     homeMarker?: IMapMarker;
+    results?: any;
 }
 function App() {
 

@@ -30,14 +30,17 @@ export const Search: React.FunctionComponent<any> = ({
               }
 
               //TODO: where should this be triggered??
-              findDgroup();
-              setAppState({
-                  ...appState,
-                  homeMarker: {
-                      lat: place.geometry.location.lat(),
-                      lng: place.geometry.location.lng(), label: 'TEST LOCATION'
-                  }
-              })
+              findDgroup(place.geometry.location.lat(), place.geometry.location.lng()).then((results) => {
+                  setAppState({
+                      ...appState,
+                      homeMarker: {
+                          lat: place.geometry.location.lat(),
+                          lng: place.geometry.location.lng(), label: 'TEST LOCATION'
+                      },
+                      results: results
+                  })
+              });
+
 
               // @ts-ignore
               searchInput.current.blur();

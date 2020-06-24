@@ -1,15 +1,7 @@
 import axios from 'axios';
-import {useEffect} from "react";
 
-export const findDgroup = () => {
+export const findDgroup = (lat: number, lng : number) => {
     const baseurl: string = process.env.REACT_APP_API_URL as string;
-    const url = `${baseurl}/dgroup`;
-
-    return axios.get(url).then((result: any) => {
-        result.forEach((res: any) => {
-           const result = res;
-        });
-    }).catch(() => {
-
-    });
+    const url = `${baseurl}/dgroup?lat=${lat}&lng=${lng}&radius=5`;
+    return axios.get(url).then(response => response.data);
 };

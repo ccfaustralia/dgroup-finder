@@ -1,4 +1,5 @@
 import React, {useEffect, useRef} from "react";
+import {findDgroup} from "../api/api";
 
 export const Search: React.FunctionComponent<any> = ({
     appState,
@@ -28,6 +29,8 @@ export const Search: React.FunctionComponent<any> = ({
                   googleServices.map.setZoom(17);
               }
 
+              //TODO: where should this be triggered??
+              findDgroup();
               setAppState({
                   ...appState,
                   homeMarker: {

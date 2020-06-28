@@ -29,7 +29,7 @@ function App() {
   return (
     <div className={styles.container}>
       <div id="search-container" className={styles.search}><Search appState={appState} setAppState={setAppState}/></div>
-      <div id="results-list-container" className={styles.list}><ResultsList /></div>
+      <div id="results-list-container" className={styles.list}><ResultsList appState={appState} /></div>
       <div id="results-map-container" className={styles.map}><ResultsMap appState={appState} onApiLoad={apiHasLoaded}/></div>
     </div>
   );

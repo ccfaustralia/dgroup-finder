@@ -27,7 +27,7 @@ export const ResultsMap: React.FunctionComponent<any> = ({
                 center={appState.homeMarker ? { lat: appState.homeMarker.lat, lng: appState.homeMarker.lng} : undefined}
             >
                 {appState.homeMarker && (
-                    <MapMarker lat={appState.homeMarker.lat} lng={appState.homeMarker.lng} label={appState.homeMarker.label} />
+                    <MapMarker lat={appState.homeMarker.lat} lng={appState.homeMarker.lng} label={appState.homeMarker.label} isHome={true} />
                 )}
                 {appState.results && appState.results.map((result: any) => (
                     <MapMarker lat={result.latitude} lng={result.longitude} label={result.name} />

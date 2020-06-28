@@ -1,0 +1,5 @@
+.resultsContainer {
+  display: grid;
+  grid-gap: 1em;
+  padding: 1em;
+}

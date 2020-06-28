@@ -1,5 +1,7 @@
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {findDgroup} from "../api/api";
+import styles from './Search.module.css';
+import { ReactComponent as LocationIcon } from '../../assets/map-pin.svg'
 
 export const Search: React.FunctionComponent<any> = ({
     appState,
@@ -7,12 +9,13 @@ export const Search: React.FunctionComponent<any> = ({
 }) => {
 
     const searchInput = useRef<HTMLInputElement>(null);
+    const [selectedDistance, setSelectedDistance] = useState(10);
     const { googleServices } = appState;
 
     const clearSearchBox = () => {
         // @ts-ignore
         searchInput.current.value = '';
-    }
+    };
 
     useEffect(() => {
       if (googleServices && googleServices.maps && googleServices.map) {
@@ -30,7 +33,7 @@ export const Search: React.FunctionComponent<any> = ({
               }
 
               //TODO: where should this be triggered??
-              findDgroup(place.geometry.location.lat(), place.geometry.location.lng()).then((results) => {
+              findDgroup(place.geometry.location.lat(), place.geometry.location.lng(), selectedDistance).then((results) => {
                   setAppState({
                       ...appState,
                       homeMarker: {
@@ -49,12 +52,30 @@ export const Search: React.FunctionComponent<any> = ({
     }, [googleServices])
 
     return(
-        <input
-            ref={searchInput}
-            type="text"
-            onFocus={clearSearchBox}
-            placeholder="Enter a location"
-        />
+        <div className={styles.searchContainer}>
+            <div className="input-container">
+                <LocationIcon className="input-icon" />
+                <input
+                    ref={searchInput}
+                    type="text"
+                    onFocus={clearSearchBox}
+                    placeholder="Enter a location"
+                />
+            </div>
+            {/*<div className="input-container">
+                <select name="distance"
+                        id="distance"
+                        value={selectedDistance}
+                        onChange={e => setSelectedDistance(parseInt(e.currentTarget.value))}
+                        >
+                    <option value="5">5km</option>
+                    <option value="10">10km</option>
+                    <option value="25">25km</option>
+                    <option value="50">5okm</option>
+                </select>
+            </div>*/}
+        </div>
+
     );
 };
 

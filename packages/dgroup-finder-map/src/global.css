@@ -3,6 +3,7 @@
 *:after {
   margin: 0;
   padding: 0;
+  font-family: "Museo-Sans-300","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 a {
@@ -11,4 +12,26 @@ a {
 ul,
 ol {
   list-style: none;
+}
+
+body {
+  --colour-ccf-blue: #00a2b6;
+}
+
+input {
+  padding: 10px 40px;
+  line-height: 1;
+  font-size: 1.1rem;
+  border-radius: 10px;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container > .input-icon {
+  position: absolute;
+  height: 22px;
+  top: 11px;
+  left: 11px;
 }

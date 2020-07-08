@@ -6,6 +6,7 @@ export interface IMapMarker {
     lat: number;
     lng: number;
     label: string;
+    locationName: string;
 }
 
 export const MapMarker: React.FunctionComponent<any> = ({label, isHome}) => {

@@ -8,6 +8,11 @@
 
 .search {
   grid-column: 1 / -1;
+  height: 80px;
+  background-color: var(--colour-ccf-blue);
+  display: flex;
+  align-items: center;
+  padding: 0 2em;
 }
 
 .map {

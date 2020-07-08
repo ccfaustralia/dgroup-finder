@@ -18,6 +18,12 @@ export const Search: React.FunctionComponent<any> = ({
     };
 
     useEffect(() => {
+        if (searchInput?.current && searchInput?.current?.value === "" && appState.homeMarker) {
+            searchInput.current.value = appState.homeMarker.locationName;
+        }
+    }, [appState.homeMarker]);
+
+    useEffect(() => {
       if (googleServices && googleServices.maps && googleServices.map) {
           let newSearchBox = new googleServices.maps.places.SearchBox(searchInput.current);
           //TODO: pass a callback function to this instead -> Ideally should be in ResultsMap component
@@ -38,15 +44,19 @@ export const Search: React.FunctionComponent<any> = ({
                       ...appState,
                       homeMarker: {
                           lat: place.geometry.location.lat(),
-                          lng: place.geometry.location.lng(), label: 'TEST LOCATION'
+                          lng: place.geometry.location.lng(),
+                          label: 'TEST LOCATION',
+                          locationName: searchInput?.current?.value
                       },
                       results: results
                   })
               });
 
+              if (searchInput?.current && searchInput?.current?.value === "") {
+                  searchInput.current.value = "";
+              }
 
-              // @ts-ignore
-              searchInput.current.blur();
+              searchInput?.current?.blur();
           });
       }
     }, [googleServices])

@@ -4,12 +4,14 @@ import Search from "./components/search/Search";
 import ResultsList from "./components/resultsList/ResultsList";
 import ResultsMap from "./components/resultsMap/ResultsMap";
 import {IMapMarker} from "./components/mapMarker/MapMarker";
+import LandingPage from "./components/landingPage/LandingPage";
 
 export interface IAppState {
     googleServices?: any;
     homeMarker?: IMapMarker;
     results?: any;
 }
+
 function App() {
 
     const [appState, setAppState] = useState<IAppState>({});
@@ -23,16 +25,22 @@ function App() {
                 autoCompleteService: new maps.places.AutocompleteService(),
                 geoCoderService: new maps.Geocoder(),
                 singaporeLatLng: new maps.LatLng(-24.85733, 133.85750)
-        }});
+            }
+        });
     };
 
-  return (
-    <div className={styles.container}>
-      <div id="search-container" className={styles.search}><Search appState={appState} setAppState={setAppState}/></div>
-      <div id="results-list-container" className={styles.list}><ResultsList appState={appState} /></div>
-      <div id="results-map-container" className={styles.map}><ResultsMap appState={appState} onApiLoad={apiHasLoaded}/></div>
-    </div>
-  );
+    return (
+        <>
+            <LandingPage appState={appState} setAppState={setAppState}/>
+            <div className={styles.container}>
+                <div id="search-container" className={styles.search}><Search appState={appState}
+                                                                             setAppState={setAppState}/></div>
+                <div id="results-list-container" className={styles.list}><ResultsList appState={appState}/></div>
+                <div id="results-map-container" className={styles.map}><ResultsMap appState={appState}
+                                                                                   onApiLoad={apiHasLoaded}/></div>
+            </div>
+        </>
+    );
 }
 
 export default App;

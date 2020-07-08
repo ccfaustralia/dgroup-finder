@@ -23,10 +23,8 @@ function App() {
                 map,
                 maps,
                 autoCompleteService: new maps.places.AutocompleteService(),
-                geoCoderService: new maps.Geocoder(),
-                singaporeLatLng: new maps.LatLng(-24.85733, 133.85750)
-            }
-        });
+                geoCoderService: new maps.Geocoder()
+        }});
     };
 
     return (
@@ -36,8 +34,7 @@ function App() {
                 <div id="search-container" className={styles.search}><Search appState={appState}
                                                                              setAppState={setAppState}/></div>
                 <div id="results-list-container" className={styles.list}><ResultsList appState={appState}/></div>
-                <div id="results-map-container" className={styles.map}><ResultsMap appState={appState}
-                                                                                   onApiLoad={apiHasLoaded}/></div>
+                <div id="results-map-container" className={styles.map}><ResultsMap appState={appState} onApiLoad={apiHasLoaded}/></div>
             </div>
         </>
     );

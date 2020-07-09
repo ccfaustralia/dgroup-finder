@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import GoogleMapReact from 'google-map-react';
 import styles from './ResultsMap.module.css';
 import MapMarker from "../mapMarker/MapMarker";
@@ -10,26 +10,35 @@ export const ResultsMap: React.FunctionComponent<any> = ({
     const key: string = process.env.REACT_APP_API_KEY as string;
     const { googleServices } = appState;
     const mapElement = useRef<HTMLInputElement>(null);
-
-    useEffect(() => {
-        //Do something here..
-        //Add Marker to the map here based on searchedLocation
-    },[appState.searchedLocation]);
+    const [infoWindowState, setInfoWindowState] = useState<any>({});
 
     useEffect(() => {
         if (!!googleServices && appState.results && appState.results.length) {
             const bounds = new googleServices.maps.LatLngBounds();
 
-            appState.results.forEach((result: any) => {
+            appState.results.forEach((result: any, index: number) => {
                 bounds.extend(new googleServices.maps.LatLng(result.latitude, result.longitude));
-            })
 
-            bounds.extend(new googleServices.maps.LatLng(appState.homeMarker.lat, appState.homeMarker.lng))
+                let updateWindowState = {...infoWindowState};
+                updateWindowState[index] = false;
+                setInfoWindowState(updateWindowState);
+            });
+
+            bounds.extend(new googleServices.maps.LatLng(appState.homeMarker.lat, appState.homeMarker.lng));
 
             googleServices.map.fitBounds(bounds);
         }
-    }, [appState.results])
+    }, [appState.results]);
 
+    // onChildClick callback can take two arguments: key and childProps
+    const onChildClickCallback = (key: number) => {
+        let updateWindowState = {...infoWindowState};
+        Object.keys(updateWindowState).forEach(key => {
+           updateWindowState[key] = false;
+        });
+        updateWindowState[key - 1] = true;
+        setInfoWindowState(updateWindowState);
+    };
 
     return(
         <section className={styles.mapContainer} ref={mapElement}>
@@ -44,12 +53,13 @@ export const ResultsMap: React.FunctionComponent<any> = ({
                 onGoogleApiLoaded={({ map, maps }) => onApiLoad(map, maps)}
                 center={appState.homeMarker ? appState.center : undefined}
                 zoom={appState.homeMarker ? appState.zoom : undefined}
+                onChildClick={onChildClickCallback}
             >
                 {appState.homeMarker && (
-                    <MapMarker lat={appState.homeMarker.lat} lng={appState.homeMarker.lng} label={appState.homeMarker.label} isHome={true} />
+                    <MapMarker lat={appState.homeMarker.lat} lng={appState.homeMarker.lng} isHome={true} />
                 )}
-                {appState.results && appState.results.map((result: any) => (
-                    <MapMarker lat={result.latitude} lng={result.longitude} label={result.name} />
+                {appState.results && appState.results.map((result: any, index: number) => (
+                    <MapMarker lat={result.latitude} lng={result.longitude} dgroup={result} showWindow={infoWindowState[index]}/>
                 ))}
             </GoogleMapReact>
         </section>

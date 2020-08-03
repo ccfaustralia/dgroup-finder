@@ -26,6 +26,10 @@ export class Dgroup extends CoreEntity {
     @Length(0, 500)
     description: string;
 
+    @Column({default: 'Mixed'})
+    @Length(0, 50)
+    lifeStage: string;
+
     @Column({type: "float"})
     @IsNotEmpty()
     latitude: number;

@@ -34,10 +34,11 @@ export class DgroupController {
     }
 
     static async create(request: Request, response: Response, next: NextFunction) {
-        let { name, description, latitude, longitude, satelliteId} = request.body;
+        let { name, description, lifeStage, latitude, longitude, satelliteId} = request.body;
         let dgroup: Dgroup = new Dgroup();
         dgroup.name = name;
         dgroup.description = description;
+        dgroup.lifeStage = lifeStage;
         dgroup.latitude = latitude;
         dgroup.longitude = longitude;
         dgroup.satellite = satelliteId;
@@ -61,7 +62,7 @@ export class DgroupController {
 
     static async edit(request: Request, response: Response, next: NextFunction) {
         const id = request.params.id;
-        let { name, description, latitude, longitude, satelliteId} = request.body;
+        let { name, description, lifeStage, latitude, longitude, satelliteId} = request.body;
 
         let dgroup: Dgroup;
         try {
@@ -73,6 +74,7 @@ export class DgroupController {
 
         dgroup.name = name;
         dgroup.description = description;
+        dgroup.lifeStage = lifeStage;
         dgroup.latitude = latitude;
         dgroup.longitude = longitude;
         dgroup.satellite = satelliteId;

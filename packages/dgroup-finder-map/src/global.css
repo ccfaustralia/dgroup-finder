@@ -16,6 +16,7 @@ ol {
 
 body {
   --colour-ccf-blue: #00a2b6;
+  --colour-modal-bg: rgba(0, 162, 182, 0.5);
 }
 
 input {

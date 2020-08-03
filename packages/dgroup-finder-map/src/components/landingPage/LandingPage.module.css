@@ -13,6 +13,10 @@
   visibility: visible;
 }
 
+.landingPage img {
+  width: 16em;
+}
+
 .landingPage h1 {
   color: white;
   text-align: right;

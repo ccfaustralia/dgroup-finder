@@ -14,7 +14,7 @@ export interface IMapMarker {
 export const MapMarker: React.FunctionComponent<any> = ({dgroup, isHome, $hover, showWindow}) => {
     return(
         <div>
-            { isHome ? (<img src={googleMapsPin} alt={'Your Location'} width={20} />) : (<img src={ccfPin} alt={dgroup ? dgroup.name : 'A dgroup near you'} width={30} className={$hover ? styles.hover : ''}/>) }
+            { isHome ? (<img src={googleMapsPin} alt={'Your Location'} width={20} />) : (<img src={ccfPin} alt={dgroup ? dgroup.name : 'A dgroup near you'} width={30} className={$hover || showWindow ? styles.active : ''}/>) }
             {showWindow && <InfoWindow dgroup={dgroup} />}
         </div>
     );

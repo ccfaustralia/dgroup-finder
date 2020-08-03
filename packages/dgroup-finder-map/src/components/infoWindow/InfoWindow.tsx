@@ -5,9 +5,11 @@ import styles from './InfoWindow.module.css'
 export const InfoWindow: React.FunctionComponent<any> = ({dgroup}) => {
     return (
         <div className={styles.infoWindowContainer}>
-            <p>
+            <h2>
                 {dgroup.name}
-            </p>
+            </h2>
+            <i>{dgroup.lifeStage}</i>
+            <p>{dgroup.description}</p>
         </div>
     );
 };

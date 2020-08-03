@@ -1,6 +1,7 @@
 .infoWindowContainer {
   position: relative;
-  bottom: 100px;
+  bottom: 200px;
+  border-radius: 10px;
   left: -45px;
   width: 220px;
   background-color: white;
@@ -8,4 +9,8 @@
   padding: 10px;
   font-size: 14px;
   z-index: 100;
+}
+
+.infoWindowContainer p {
+  margin-top: 0.5em;
 }

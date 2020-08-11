@@ -1,0 +1,19 @@
+/* Buttons */
+
+.btn {
+  padding: 5px;
+  border: 2px var(--colour-ccf-blue) solid;
+  min-width: 70px;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0.2em -0.2em 0.5em 0.25em rgba(66, 69, 78, 0.15); /* 3px 3px 8px 4px */
+}
+
+.btn-primary {
+  background-color: var(--colour-ccf-blue);
+  color: var(--colour-standard-white);
+}
+
+.btn-secondary {
+  background-color: var(--colour-standard-white);
+}

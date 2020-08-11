@@ -1,0 +1,89 @@
+/* Forms */
+
+input[type='text'],
+input[type='number'],
+input[type='email'],
+input[type='password'],
+input[type='date'],
+textarea {
+  background-color: var(--colour-input-bg);
+  padding: 10px 40px;
+  line-height: 1;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  border: 2px var(--colour-border) solid;
+}
+
+textarea {
+  resize: none;
+}
+
+select {
+  font: 400 12px system-ui;
+}
+
+input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+}
+
+.input-group input[type='text'],
+.input-group input[type='number'],
+.input-group  input[type='email'],
+.input-group input[type='password'],
+.input-group input[type='date'],
+.input-group textarea {
+  display: block;
+  font-size: 12px;
+  padding: 5px 12px;
+  height: 30px;
+  width: calc(100% - 28px); /*12px padding and 2px border on each side*/
+  border-radius: 8px;
+}
+
+.input-group input:disabled, select:disabled {
+  background-color: var(--colour-primary-faded-lighter);
+}
+
+.input-group label, .input-group p.label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: .3em;
+}
+
+.input-group.field-required label:after {
+  content: '*';
+  color: var(--colour-error);
+  font-size: 15px;
+}
+
+.input-group > p.field-error {
+  font-size: 12px;
+  display: block;
+  color: var(--colour-error);
+}
+
+.input-group.checkbox-group label {
+  margin-bottom: .8em;
+}
+
+.input-group.checkbox-group input[type='checkbox'] {
+  vertical-align: middle;
+  margin-right: .8em;
+}
+
+.input-group.grid-full-width {
+  grid-column: 1 / -1;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-container > .input-icon {
+  position: absolute;
+  height: 22px;
+  top: 11px;
+  left: 11px;
+}

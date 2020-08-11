@@ -1,0 +1,73 @@
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--colour-modal-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+
+.modalContainer {
+  background-color: var(--colour-standard-white);
+  border-radius: 20px;
+  width: 50vw;
+  max-height: 95vh;
+  /* Needed to allow the topRightButton to display correctly: */
+  position: relative;
+  padding: 20px;
+  border: 2px var(--colour-border) solid;
+  box-shadow: 0.2em -0.2em 0.5em 0.25em rgba(66, 69, 78, 0.15); /* 3px 3px 8px 4px */
+}
+
+/* ---
+ Scrolling body logic.
+
+ You need an outer container to define the max-height and use flexbox.
+ You need an inner container to flex as large as it can, hide the scrollbar
+ but still be scrollable.
+
+ */
+
+.bodyOuter {
+  display: flex;
+  max-height: 85vh;
+}
+
+.bodyInner {
+  flex: 1;
+  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.title {
+  font-size: 30px;
+  line-height: 60px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+/* Top right button style for modals - relative to font-size of the component for easy scalability */
+.topRightButton {
+  background-color: var(--colour-standard-white);
+  padding: 0.33em;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  border-radius: 50%;
+  border: 2px var(--colour-border) solid;
+  box-shadow: 0.2em -0.2em 0.5em 0.25em rgba(66, 69, 78, 0.15); /* 3px 3px 8px 4px */
+  cursor: pointer;
+}
+
+.topRightButton svg {
+  width: 30px;
+  height: 30px;
+  display: block;
+  stroke: var(--colour-border);
+}

@@ -20,11 +20,12 @@ export class SatelliteController {
     }
 
     static async create(request: Request, response: Response, next: NextFunction) {
-        let { name, description, country } = request.body;
+        let { name, description, country, email } = request.body;
         let satellite: Satellite = new Satellite();
         satellite.name = name;
         satellite.description = description;
         satellite.country = country;
+        satellite.email = email;
         satellite.createdBy = response.locals.jwtPayload.userId;
 
         const errors = await validate(satellite);
@@ -45,7 +46,7 @@ export class SatelliteController {
 
     static async edit(request: Request, response: Response, next: NextFunction) {
         const id = request.params.id;
-        let { name, description, country } = request.body;
+        let { name, description, country, email } = request.body;
 
         let satellite: Satellite;
         try {
@@ -58,6 +59,7 @@ export class SatelliteController {
         satellite.name = name;
         satellite.description = description;
         satellite.country = country;
+        satellite.email = email;
         satellite.updatedBy = response.locals.jwtPayload.userId;
         const errors = await validate(satellite);
         if (errors.length > 0) {

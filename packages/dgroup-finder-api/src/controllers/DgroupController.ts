@@ -34,13 +34,16 @@ export class DgroupController {
     }
 
     static async create(request: Request, response: Response, next: NextFunction) {
-        let { name, description, lifeStage, latitude, longitude, satelliteId} = request.body;
+        let { name, description, lifeStage, latitude, longitude, meetingFrequency, meetingDay, leaderId, satelliteId} = request.body;
         let dgroup: Dgroup = new Dgroup();
         dgroup.name = name;
         dgroup.description = description;
         dgroup.lifeStage = lifeStage;
         dgroup.latitude = latitude;
         dgroup.longitude = longitude;
+        dgroup.meetingFrequency = meetingFrequency;
+        dgroup.meetingDay = meetingDay;
+        dgroup.leader = leaderId;
         dgroup.satellite = satelliteId;
         dgroup.createdBy = response.locals.jwtPayload.userId;
 
@@ -62,7 +65,7 @@ export class DgroupController {
 
     static async edit(request: Request, response: Response, next: NextFunction) {
         const id = request.params.id;
-        let { name, description, lifeStage, latitude, longitude, satelliteId} = request.body;
+        let { name, description, lifeStage, latitude, longitude, meetingFrequency, meetingDay, leaderId, satelliteId} = request.body;
 
         let dgroup: Dgroup;
         try {
@@ -77,6 +80,9 @@ export class DgroupController {
         dgroup.lifeStage = lifeStage;
         dgroup.latitude = latitude;
         dgroup.longitude = longitude;
+        dgroup.meetingFrequency = meetingFrequency;
+        dgroup.meetingDay = meetingDay;
+        dgroup.leader = leaderId;
         dgroup.satellite = satelliteId;
         dgroup.updatedBy = response.locals.jwtPayload.userId;
         const errors = await validate(dgroup);

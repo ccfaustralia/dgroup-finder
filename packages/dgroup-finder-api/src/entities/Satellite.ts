@@ -1,5 +1,5 @@
 import {Entity, Column, OneToMany, CreateDateColumn, ManyToOne, UpdateDateColumn} from "typeorm";
-import {Length, IsNotEmpty} from "class-validator";
+import {Length, IsNotEmpty, IsEmail} from "class-validator";
 import {CoreEntity} from "./CoreEntity";
 import {User} from "./User";
 import {Dgroup} from "./Dgroup";
@@ -19,6 +19,11 @@ export class Satellite extends CoreEntity {
     @Column()
     @IsNotEmpty()
     country: string;
+
+    @Column()
+    @IsEmail()
+    @IsNotEmpty()
+    email: string;
 
     @OneToMany(type => User, user => user.satellite)
     users: User[];

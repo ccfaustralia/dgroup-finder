@@ -38,6 +38,18 @@ export class Dgroup extends CoreEntity {
     @IsNotEmpty()
     longitude: number;
 
+    @Column({default: 'Weekly'})
+    @Length(0, 50)
+    meetingFrequency: string;
+
+    @Column({default: 'Sunday'})
+    @Length(0, 50)
+    meetingDay: string;
+
+    @ManyToOne(type => User,{eager: true})
+    @IsNotEmpty()
+    leader: User;
+
     @ManyToOne(type => Satellite, satellite => satellite.dgroups, {eager: true})
     @IsNotEmpty()
     satellite: Satellite;
